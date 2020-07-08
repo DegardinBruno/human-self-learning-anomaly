@@ -1,6 +1,5 @@
 # Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events
 
-[**v0.3.0** version](https://github.com/MVIG-SJTU/AlphaPose)
 This repository contains the code for the IJCB'20 paper ["Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events"](http://socia-lab.di.ubi.pt/EventDetection)
 
 <div align="center">
