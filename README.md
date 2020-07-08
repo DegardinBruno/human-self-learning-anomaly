@@ -18,11 +18,15 @@ pip install -r requirements.txt  # use flag --user if permission needed
 * Scikit-learn: 0.23.1
 * NumPy: 1.19.0
 
+## Preprocessing Dataset
+1. Trim each video of your dataset into sub-videos of fixed length (use 16 seconds, for consistency).
+2. Extract the [C3D](https://github.com/facebookarchive/C3D) features of your dataset.
+3. Convert [C3D](https://github.com/facebookarchive/C3D) features into a fixed temporal segment using [C3D_to_fix_segments.py](utils/C3D_to_fix_segments.py) (use 32, for consistency).
+4. Use .csv files to dispose each instance into -> \[path_to_temporal_segments_file, weak_flag\], where weak_flag contains 0 if the video does not contain any anomaly, and 1 if the video contains an anomaly somewhere.
 
 ## Dataset and Directories Structure
 
 The [**UBI-Fights Dataset**](http://socia-lab.di.ubi.pt/EventDetection) provides a wide diversity in fighting scenarios with 1000 videos, where 784 are normal daily life situations and 216 contain a fighting event. This dataset is **fully-annotated** at the **frame-level**.<br>
-Extract the [C3D](https://github.com/facebookarchive/C3D) features of your dataset.<br>
 To train your model and employ self-supervision for each network, the following directory structure is created:
 
 ```
