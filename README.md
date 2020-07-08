@@ -22,6 +22,7 @@ pip install -r requirements.txt  # use flag --user if permission needed
 ## Dataset and Directories Structure
 
 The [**UBI-Fights Dataset**](http://socia-lab.di.ubi.pt/EventDetection) provides a wide diversity in fighting scenarios with 1000 videos, where 784 are normal daily life situations and 216 contain a fighting event. This dataset is **fully-annotated** at the **frame-level**.<br>
+Extract the [C3D](https://github.com/facebookarchive/C3D) features of your dataset-<br>
 To train your model and employ self-supervision for each network, the following directory structure is created:
 
 ```
