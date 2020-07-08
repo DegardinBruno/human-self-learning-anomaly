@@ -1,7 +1,7 @@
 # Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events
 
 <div align="center">
-    <img src="fig/WSS_Schema.png", width="400">
+    <img src="fig/WSS_Schema.png", width="80%">
 </div>
 
 
