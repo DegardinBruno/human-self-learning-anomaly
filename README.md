@@ -1,5 +1,5 @@
 # Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events
-======
+
 
 ##### Libraries version:
 * Keras: 2.3.1
