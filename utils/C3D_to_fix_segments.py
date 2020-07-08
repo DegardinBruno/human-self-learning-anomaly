@@ -4,11 +4,11 @@ import numpy as np
 
 def read_binary_blob(fn):
     fid = open(fn, 'rb')
-    t = struct.unpack('i', fid.read(4))[0]  # unpack byte (4 bits) from fn file for topology
-    c = struct.unpack('i', fid.read(4))[0]
-    l = struct.unpack('i', fid.read(4))[0]
-    h = struct.unpack('i', fid.read(4))[0]
-    w = struct.unpack('i', fid.read(4))[0]
+    t     = struct.unpack('i', fid.read(4))[0]  # unpack byte (4 bits) from fn file for topology
+    c     = struct.unpack('i', fid.read(4))[0]
+    l     = struct.unpack('i', fid.read(4))[0]
+    h     = struct.unpack('i', fid.read(4))[0]
+    w     = struct.unpack('i', fid.read(4))[0]
     total = t * c * l * h * w
 
     ret = np.zeros(total, np.float32)
@@ -25,9 +25,9 @@ def humanSort(text):  # Sort function for strings w/ numbers
     return sorted(text, key=arrayKey)
 
 
-root_C3D   = 'PATH_TO_RAW_C3D_FEATURES'       # root_C3D -> directory_to_type_video -> full_video -> sub-video -> features
-dest_seg   = 'PATH_TO_C3D_TEMPORAL_SEGMENTS'  # the folder with the sub-videos of each
-sufix      = '_C.txt'
+root_C3D = 'PATH_TO_RAW_C3D_FEATURES'       # root_C3D -> directory_to_type_video -> full_video -> sub-video -> features
+dest_seg = 'PATH_TO_C3D_TEMPORAL_SEGMENTS'  # the folder with the sub-videos of each
+sufix    = '_C.txt'
 
 temporal_segments = 32
 
@@ -45,13 +45,13 @@ for folder in humanSort(os.listdir(root_C3D)):
             os.makedirs(dest_video)
 
         for seq in humanSort(os.listdir(path_video)):
-            path_seq = os.path.join(path_video, seq)
+            path_seq  = os.path.join(path_video, seq)
 
             all_feat  = [os.path.join(path_seq, feat) for feat in humanSort(os.listdir(path_seq))]
             feat_vect = np.zeros((len(all_feat), 4096))
 
             for i, feat in enumerate(all_feat):
-                data = read_binary_blob(feat)
+                data           = read_binary_blob(feat)
                 feat_vect[i,:] = data
 
             seg_feat = np.zeros((temporal_segments,4096))
@@ -61,13 +61,9 @@ for folder in humanSort(os.listdir(root_C3D)):
                 ss = int(shots_32[i])
                 ee = int(shots_32[i+1]-1)
 
-                temp_vect = feat_vect[ss,:] if ss==ee else feat_vect[ss,:] if ee<ss else np.mean(feat_vect[ss:ee+1,:], axis=1)
-
-                temp_vect = temp_vect/np.linalg.norm(temp_vect)
-
+                temp_vect     = feat_vect[ss,:] if ss==ee else feat_vect[ss,:] if ee<ss else np.mean(feat_vect[ss:ee+1,:], axis=1)
+                temp_vect     = temp_vect/np.linalg.norm(temp_vect)
                 seg_feat[i,:] = temp_vect
 
-
             dest_path = os.path.join(dest_video, seq+sufix)
-
             np.savetxt(dest_path, seg_feat, delimiter=' ', fmt='%.6f')
