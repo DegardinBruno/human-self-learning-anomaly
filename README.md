@@ -17,7 +17,7 @@ This repository contains the code for the IJCB'20 paper ["Human Activity Analysi
 
 ## Directory structure and datasets
 
-[**UBI-Fights Dataset**](http://socia-lab.di.ubi.pt/EventDetection).\n
+[**UBI-Fights Dataset**](http://socia-lab.di.ubi.pt/EventDetection).<br>
 To train your model and employ self-supervision for each network, the following directory structure is created:
 
 ```
