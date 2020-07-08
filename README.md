@@ -66,6 +66,13 @@ To train your model and employ self-supervision for each network, the following 
     
 ```
 
+
+## Quick Start
+- **Training**: Train from scratch
+```bash
+python3 ws_ss.py --save_best_weak --save_best_strong    # Set flag settings accordingly to the ws_ss.py file
+```
+
 ## Citation
 Please cite this paper in your publications if it helps your research:
 
