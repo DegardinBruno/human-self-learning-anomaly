@@ -15,9 +15,9 @@ This repository contains the code for the IJCB'20 paper ["Human Activity Analysi
 * NumPy: 1.17.3
 
 
-## Directory structure and datasets
+## Dataset and Directories Structure
 
-[**UBI-Fights Dataset**](http://socia-lab.di.ubi.pt/EventDetection).<br>
+The [**UBI-Fights Dataset**](http://socia-lab.di.ubi.pt/EventDetection) provides a wide diversity in fighting scenarios with 1000 videos, where 784 are normal daily life situations and 216 contains an fighting event. This dataset is **fully-annotated** at the **frame-level**.<br>
 To train your model and employ self-supervision for each network, the following directory structure is created:
 
 ```
