@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras
-import csv, numpy as np, os
-from sklearn.metrics import roc_auc_score, roc_curve
+import numpy as np, os
+from sklearn.metrics import roc_auc_score
 import bayesian_classifier as BC
 
 

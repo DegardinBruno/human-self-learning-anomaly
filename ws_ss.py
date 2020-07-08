@@ -1,6 +1,5 @@
 import csv, numpy as np
-import re, os
-import matplotlib.pyplot as plt
+import os
 from scipy.io import loadmat, savemat
 import weak_classifier as WC
 import strong_classifier as SC
@@ -269,21 +268,21 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     # Paths
-    parser.add_argument('--path_weak_train',       type=str, default='annotation/weak/train30.csv',     help='Train csv file for the WS Model')
-    parser.add_argument('--path_weak_val',         type=str, default='annotation/weak/val1.csv',        help='Val csv file for the WS Model')
-    parser.add_argument('--path_weak_test',        type=str, default='annotation/weak/test1.csv',       help='Test csv file for the WS Model')
-    parser.add_argument('--path_weak_free',        type=str, default='annotation/weak/free.csv',        help='Unlabeled set csv file for the WS Model')
-    parser.add_argument('--path_weak_selected',    type=str, default='annotation/weak/selected.csv',    help='Selected samples csv file from the SS Model to the WS Model in current iteration')
-    parser.add_argument('--path_weak_val_note',    type=str, default='annotation/weak/fullVal1.csv',    help='Val annotation csv file for the WS Model')
-    parser.add_argument('--path_weak_test_note',   type=str, default='annotation/weak/fullTest1.csv',   help='Test annotation csv file for the WS Model')
-    parser.add_argument('--path_strong_train',     type=str, default='annotation/strong/train.csv',     help='Train csv file for the SS Model')
-    parser.add_argument('--path_strong_predict',   type=str, default='annotation/strong/predict.csv',   help='predict csv file for the SS Model, to be annotated for the WS Model')
-    parser.add_argument('--path_strong_val',       type=str, default='annotation/strong/val1.csv',      help='Val csv file for the SS Model')
-    parser.add_argument('--path_strong_test',      type=str, default='annotation/strong/test1.csv',     help='Test csv file for the SS Model')
-    parser.add_argument('--path_strong_free',      type=str, default='annotation/strong/free.csv',      help='Unlabeled set csv file for the SS Model')
-    parser.add_argument('--path_strong_selected',  type=str, default='annotation/strong/selected.csv',  help='Selected samples csv file from the WS Model to the SS Model in current iteration')
-    parser.add_argument('--path_strong_val_note',  type=str, default='annotation/strong/fullVal1.csv',  help='Val annotation csv file for the SS Model')
-    parser.add_argument('--path_strong_test_note', type=str, default='annotation/strong/fullTest1.csv', help='Test annotation csv file for the SS Model')
+    parser.add_argument('--path_weak_train',       type=str, default='annotation/weak/train.csv',        help='Train csv file for the WS Model')
+    parser.add_argument('--path_weak_val',         type=str, default='annotation/weak/val.csv',          help='Val csv file for the WS Model')
+    parser.add_argument('--path_weak_test',        type=str, default='annotation/weak/test.csv',         help='Test csv file for the WS Model')
+    parser.add_argument('--path_weak_free',        type=str, default='annotation/weak/free.csv',         help='Unlabeled set csv file for the WS Model')
+    parser.add_argument('--path_weak_selected',    type=str, default='annotation/weak/selected.csv',     help='Selected samples csv file from the SS Model to the WS Model in current iteration')
+    parser.add_argument('--path_weak_val_note',    type=str, default='annotation/weak/val_notes.csv',    help='Val annotation csv file for the WS Model')
+    parser.add_argument('--path_weak_test_note',   type=str, default='annotation/weak/test_notes.csv',   help='Test annotation csv file for the WS Model')
+    parser.add_argument('--path_strong_train',     type=str, default='annotation/strong/train.csv',      help='Train csv file for the SS Model')
+    parser.add_argument('--path_strong_predict',   type=str, default='annotation/strong/predict.csv',    help='predict csv file for the SS Model, to be annotated for the WS Model')
+    parser.add_argument('--path_strong_val',       type=str, default='annotation/strong/val.csv',        help='Val csv file for the SS Model')
+    parser.add_argument('--path_strong_test',      type=str, default='annotation/strong/test.csv',       help='Test csv file for the SS Model')
+    parser.add_argument('--path_strong_free',      type=str, default='annotation/strong/free.csv',       help='Unlabeled set csv file for the SS Model')
+    parser.add_argument('--path_strong_selected',  type=str, default='annotation/strong/selected.csv',   help='Selected samples csv file from the WS Model to the SS Model in current iteration')
+    parser.add_argument('--path_strong_val_note',  type=str, default='annotation/strong/val_notes.csv',  help='Val annotation csv file for the SS Model')
+    parser.add_argument('--path_strong_test_note', type=str, default='annotation/strong/test_notes.csv', help='Test annotation csv file for the SS Model')
 
     # Video settings
     parser.add_argument('--num_frame',     type=int, default=480, help='Fixed number of frames of each video')
@@ -365,8 +364,5 @@ if __name__ == '__main__':
 
     features_video = opt.num_frame/opt.features       # How many C3D Feature files in one video
     pred_gap       = opt.num_frame/opt.temp_segments  # Reshape number of predictions to number of frames
-
-
-
 
     WS_SS(opt.WSS_iterations)

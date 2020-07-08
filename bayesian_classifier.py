@@ -1,7 +1,6 @@
 from scipy import stats
 import numpy as np, os
 import matplotlib.pyplot as plt
-from scipy.io import loadmat
 
 std_deviation = [ [1, -1], [1, 2], [-1, -2], [2, 3], [-2, -3], [3, 10], [-3, -10]]
 fill_color    = [ ['#0b559f', '#2b7bba', '#2b7bba', '#539ecd', '#539ecd', '#89bedc', '#89bedc'] , ['#B10102', '#c03334', '#c03334', '#c84d4d', '#c84d4d', '#d06667', '#d06667'] ]

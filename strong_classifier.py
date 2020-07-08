@@ -1,19 +1,17 @@
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.regularizers import l2
-from keras.optimizers import SGD, adam, Adagrad
+from keras.optimizers import Adagrad
 from keras.models import model_from_json
 from scipy.io import loadmat, savemat
 import csv
-import os, struct, re, shutil
+import os, struct, re
 import numpy as np
-from datetime import datetime
 from sklearn.metrics import roc_auc_score, roc_curve
 import matplotlib.pyplot as plt
 import statistics
 import pyprog
 from collections import Counter
-from sklearn.utils import class_weight
 
 
 def create_model():
