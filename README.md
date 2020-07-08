@@ -13,7 +13,7 @@
 * NumPy: 1.17.3
 
 
-## Prepare datasets
+## Directory structure and datasets
 
 To train your model and employ self-supervision for each network, the following directory structure is created:
 
