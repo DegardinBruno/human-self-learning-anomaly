@@ -27,7 +27,7 @@ To train your model and employ self-supervision for each network, the following 
 |   |   |-- test_notes.csv
 |   |   `-- val_notes.csv
 |   `-- weak
-|       |-- train.csv
+|       |-- train.csv           // Small percentage (like 30%) of the original training set, for self-supervision purposes
 |       |-- test.csv
 |       |-- val.csv
 |       |-- unlabeled_set.csv
