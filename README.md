@@ -12,6 +12,30 @@
 * Scikit-learn: 0.21.3
 * NumPy: 1.17.3
 
+
+## Prepare datasets
+
+To train your model and employ self-supervision for each network, the following directory structure is created:
+
+```
+|-- annotation
+`-- |-- strong
+    |   |-- train.csv  // empty, to be filled by the WS Model and Bayesian Classifier
+    |   |-- test.csv
+    |   |-- val.csv
+    |   |-- unlabeled_set.csv
+    |   |-- test_notes.csv
+    |   `-- val_notes.csv
+    `-- weak
+        |-- train.csv
+        |-- test.csv
+        |-- val.csv
+        |-- unlabeled_set.csv
+        |-- test_notes.csv
+        |-- val_notes.csv
+    
+```
+
 ## Citation
 Please cite this paper in your publications if it helps your research:
 
