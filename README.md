@@ -19,21 +19,33 @@ To train your model and employ self-supervision for each network, the following 
 
 ```
 |-- annotation
-`-- |-- strong
-    |   |-- train.csv  // empty, to be filled by the WS Model and Bayesian Classifier
-    |   |-- test.csv
-    |   |-- val.csv
-    |   |-- unlabeled_set.csv
-    |   |-- test_notes.csv
-    |   `-- val_notes.csv
-    `-- weak
-        |-- train.csv
-        |-- test.csv
-        |-- val.csv
-        |-- unlabeled_set.csv
-        |-- test_notes.csv
-        |-- val_notes.csv
-    
+|   |-- strong
+|   |   |-- train.csv           // empty, to be filled by the WS Model and Bayesian Classifier
+|   |   |-- test.csv
+|   |   |-- val.csv
+|   |   |-- unlabeled_set.csv
+|   |   |-- test_notes.csv
+|   |   `-- val_notes.csv
+|   `-- weak
+|       |-- train.csv
+|       |-- test.csv
+|       |-- val.csv
+|       |-- unlabeled_set.csv
+|       |-- test_notes.csv
+|       |-- val_notes.csv
+|-- models
+|   |-- pattern_model
+|   |   |-- 0                   // WSS framework iterations
+|   |   |-- 1
+|   |   |-- ...
+|   |-- strong_model
+|   |   |-- 0                   // WSS framework iterations
+|   |   |-- 1
+|   |   |-- ...
+    `-- weak_model
+|       |-- 0                   // WSS framework iterations
+|       |-- 1
+|       |-- ...
 ```
 
 ## Citation
