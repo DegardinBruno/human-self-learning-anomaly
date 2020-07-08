@@ -6,6 +6,10 @@ This repository contains the code for the IJCB'20 paper ["Human Activity Analysi
     <img src="fig/WSS_Schema.png", width=100%">
 </div>
 
+## Installation
+```bash
+pip install -r requirements.txt  # use flag --user if permission needed
+```
 
 ##### Libraries version:
 * Keras: 2.4.3
