@@ -32,7 +32,7 @@ To train your model and employ self-supervision for each network, the following 
 |       |-- val.csv
 |       |-- unlabeled_set.csv
 |       |-- test_notes.csv
-|       |-- val_notes.csv
+|       `-- val_notes.csv
 |-- models
 |   |-- pattern_model
 |   |   |-- 0                   // WSS framework iterations
@@ -42,10 +42,20 @@ To train your model and employ self-supervision for each network, the following 
 |   |   |-- 0                   // WSS framework iterations
 |   |   |-- 1
 |   |   |-- ...
-    `-- weak_model
+|   `-- weak_model
 |       |-- 0                   // WSS framework iterations
 |       |-- 1
 |       |-- ...
+`-- results         
+    |-- pattern
+    |   `-- VAL                 // Directory for validation stats
+    |-- strong
+    |   |-- FINAL               // Directory for test stats
+    |   `-- VAL
+    `-- weak
+        |-- FINAL
+        `-- VAL
+    
 ```
 
 ## Citation
