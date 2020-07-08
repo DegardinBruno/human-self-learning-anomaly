@@ -1,4 +1,4 @@
-# Iterative Learning Frameworks for Abnormal Event Detection
+# Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events
 ======
 
 ##### Libraries version:
