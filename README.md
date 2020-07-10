@@ -27,12 +27,12 @@ The [**UBI-Fights Dataset**](http://socia-lab.di.ubi.pt/EventDetection) provides
 To train your model and employ self-supervision for each network, the following directory structure is created:
 
 ```
-|-- annotation
+|-- **annotation
 |   |-- strong                  // Insert here your .csv files to be used by the SS Model
 |   |   |-- train.csv           // empty, to be filled by the WS Model and Bayesian Classifier
 |   |   |-- test.csv
 |   |   |-- val.csv
-|   |   |-- unlabeled_set.csv
+|   |   |-- unlabeled_set.csv   // Same remaining videos unlabeled from the weak, but in C3D raw segment format
 |   |   |-- test_notes.csv
 |   |   `-- val_notes.csv
 |   `-- weak                    // Insert here your .csv files to be used by the WS Model
