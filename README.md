@@ -77,7 +77,7 @@ To train your model and employ self-supervision for each network, the following 
 python3 ws_ss.py --save_best_weak --save_best_strong    # Set flag settings accordingly to the ws_ss.py file
 ```
 
-- **Restart from checkpoint**: To analyse the unlabeled scores, after a network executed over the unlabeled set, set the previous iteration and network.
+- **Restart from checkpoint**: To analyse the unlabeled scores, after a network executed over the unlabeled set, select the previous iteration and network.
 ```bash
 python3 ws_ss.py --start_iteration 0 --weak_free_checkpoint --save_best_weak --save_best_strong    # Set flag settings accordingly to the ws_ss.py file
 ```
