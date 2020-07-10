@@ -9,7 +9,7 @@ def humanSort(text):  # Sort function for strings w/ numbers
     return sorted(text, key=arrayKey)
 
 
-def normDur(dir_path, dest_path, fileName, avg_fps, fps):  # Normalize duration of video, partitioning the video in smaller videos
+def normDur(dir_path, dest_path, fileName, avg_fps, fps, erase_frames):  # Normalize duration of video, partitioning the video in smaller videos
 
     print('Normalizing video duration...')
     size = int((len(os.listdir(dir_path)))/avg_fps)                                              # Get duration video to normalize after
@@ -40,7 +40,7 @@ def normDur(dir_path, dest_path, fileName, avg_fps, fps):  # Normalize duration 
 
             concat_clip = mp.concatenate_videoclips(clips,  method="compose")
             concat_clip.write_videofile(os.path.join(dest_path, fileName + "_" + str(i) + '.mp4'), fps=fps)
-            shutil.rmtree(os.path.join(dest_path, str(i)))
+            shutil.rmtree(os.path.join(dest_path, str(i))) if erase_frames else None
 
         print('Successfully normalized!')
     else:
@@ -48,7 +48,7 @@ def normDur(dir_path, dest_path, fileName, avg_fps, fps):  # Normalize duration 
 
 
 
-def read_paths(root_frames, root_dest, avg_fps, fps):
+def read_paths(root_frames, root_dest, avg_fps, fps, erase_frames):
     for folder in humanSort(os.listdir(root_frames)):
         path_type_frames = os.path.join(root_frames, folder)
         path_dest        = os.path.join(root_dest, folder)
@@ -56,7 +56,7 @@ def read_paths(root_frames, root_dest, avg_fps, fps):
         for file in humanSort(os.listdir(path_type_frames)):
             dir_path  = os.path.join(path_type_frames, file)
             dest_path = os.path.join(path_dest, file)
-            normDur(dir_path, dest_path, file, avg_fps, fps)
+            normDur(dir_path, dest_path, file, avg_fps, fps, erase_frames)
 
     print(too_short)
 
@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
     avg_fps = opt.fps * opt.duration
 
-    read_paths(opt.root_frames, opt.root_sub_videos, avg_fps, opt.fps)
+    read_paths(opt.root_frames, opt.root_sub_videos, avg_fps, opt.fps, opt.erase_frames)
 
 
 too_short = []
