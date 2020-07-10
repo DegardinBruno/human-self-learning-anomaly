@@ -7,7 +7,7 @@ In order to employ the WS/SS framework and self-supervision, normalization is re
 python3 video_to_frames.py --root_videos path/to/videos --root_conv_videos destination/path/conv/videos --root_frames destination/path/frames
 ```
 
-2. **Normalize Durations**: Convert frames from the previous step to fixed number of sub videos. Also, normalize your .csv files to the corresponding duration of sub videos.
+2. **Normalize Durations**: Convert frames from the previous step to fixed number of sub videos. Also, normalize your .csv files to the corresponding duration of sub videos. **The .csv files should dispose each instance into a row** -> \[path_to_temporal_segments_file, weak_flag\], where weak_flag contains 0 if the video does not contain any anomaly, and 1 if the video contains an anomaly somewhere.
 ```bash
 python3 video_to_sub_videos.py --root_frames path/to/frames --root_sub_videos destination/path/sub/videos --erase_frames  # Change settings if needed
 ```
