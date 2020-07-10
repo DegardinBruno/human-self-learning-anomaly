@@ -19,7 +19,7 @@ pip install -r requirements.txt  # use flag --user if permission needed
 * NumPy: 1.19.0
 
 ## Preprocessing Dataset << highly recommended
-In order to employ the WS/SS framework and apply self-supervision, normalization is required since we are working with coupled deep learning networks working at different levels. Follow the steps inside the [utils](utils) folder to successfully normalize your dataset.
+In order to employ the WS/SS framework and apply self-supervision to your dataset, normalization is required since we are working with coupled deep learning networks working at different levels. Follow the steps inside the [utils](utils) folder to successfully normalize your dataset.
 
 ## Dataset and Directories Structure
 
