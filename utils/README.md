@@ -5,7 +5,7 @@
 python3 video_to_frames.py --root_videos path/to/videos --root_conv_videos destination/path/conv/videos --root_frames destination/path/frames
 ```
 
-2. **Normalize Durations**: Convert frames from the previous step to fixed number of sub videos. Also, normalize your .csv files to the corresponding duration.
+2. **Normalize Durations**: Convert frames from the previous step to fixed number of sub videos. Also, normalize your .csv files to the corresponding duration of sub videos.
 ```bash
 python3 video_to_sub_videos.py --root_frames path/to/frames --root_sub_videos destination/path/sub/videos --erase_frames  # Change settings if needed
 ```
