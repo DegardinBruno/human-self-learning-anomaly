@@ -120,7 +120,7 @@ def best_model(model, iteration):  # Select the best model based on the validati
 
 def checkpoint_val(model, iteration):
     file = loadmat(os.path.join('results', model ,'VAL', str(iteration), 'eval_AUC_'+str(iteration)+'.mat'))
-    return np.array(file['gt']), np.array(file['scores'][0])
+    return np.array(file['gt'][0]), np.array(file['scores'][0])
 
 
 def checkpoint_load(model, iteration):
@@ -149,7 +149,6 @@ def WS_SS(iterations):
             BC.histogram(notes_val, scores_val, 'weak/VAL', current_iteration)
             classes, probs, max_neg_threshold, max_pos_threshold = BC.gaussian_kde(notes_val, scores_val, 'weak', current_iteration)
             ##############################################################
-
 
             ######### Best WS Model Execution on Unlabeled Data ##########
             best_iteration        = best_model('weak', current_iteration)
@@ -194,15 +193,15 @@ def WS_SS(iterations):
         ##########################
         #        SS  MODEL       #
         ##########################
-        if not opt.strong_free_checkpoint:
+        if opt.strong_free_checkpoint:
 
             ######## SS Model Training, Evaluation and Statistics ########
-            SC.train(opt.path_strong_train, opt.SS_iterations, current_iteration, opt.path_strong_val, opt.path_strong_val_note, opt.num_features, opt.batchsize_strong, opt.save_best_strong)
-            strong_notes_test, strong_scores_test = SC.test(True, current_iteration, opt.path_strong_test, opt.path_strong_test_note, opt.num_features)
+             SC.train(opt.path_strong_train, opt.SS_iterations, current_iteration, opt.path_strong_val, opt.path_strong_val_note, opt.features, opt.batchsize_strong, opt.save_best_strong)
+            strong_notes_test, strong_scores_test = SC.test(True, current_iteration, opt.path_strong_test, opt.path_strong_test_note, opt.features)
             statistics.plot_AUC('strong/FINAL', current_iteration)
             BC.histogram(strong_notes_test, strong_scores_test, 'strong/FINAL', current_iteration)
 
-            strong_notes_val, strong_scores_val = SC.test(False, current_iteration, opt.path_strong_val, opt.path_strong_val_note, opt.num_features)
+            strong_notes_val, strong_scores_val = SC.test(False, current_iteration, opt.path_strong_val, opt.path_strong_val_note, opt.features)
             statistics.plot_AUC('strong/VAL', current_iteration)
             BC.histogram(strong_notes_val, strong_scores_val, 'strong/VAL', current_iteration)
             classes, probs, max_neg_threshold, max_pos_threshold = BC.gaussian_kde(strong_notes_val, strong_scores_val, 'strong', current_iteration)
@@ -215,7 +214,7 @@ def WS_SS(iterations):
             PC.train(strong_notes_pattern, strong_scores_pattern, current_iteration)                                         # Pattern Classifier training with validation scores and GT
             classes, probs = PC.test(strong_scores_pattern, True, current_iteration, y_test=strong_notes_pattern)            # Keep stats
 
-            strong_notes_pattern, strong_scores_pattern = SC.predict_pattern(1, best_iteration, opt.path_strong_free, None, opt.num_features)  # Execute SS model on unlabeled set
+            strong_notes_pattern, strong_scores_pattern = SC.predict_pattern(1, best_iteration, opt.path_strong_free, None, opt.features)  # Execute SS model on unlabeled set
             save_free_scores('strong', current_iteration, strong_scores_pattern, [1,2,3])                                    # Backup scores
             classes, probs = PC.test(strong_scores_pattern, False, current_iteration)                                        # Execute Pattern Classifier over unlabeled scores
             save_free_scores('strong', current_iteration, strong_scores_pattern, probs)                                      # Backup scores
@@ -254,7 +253,7 @@ def WS_SS(iterations):
 
         ############# Annotate abnormal videos with SS model #############
         if pos_size > 0:
-            strong_notes_free, strong_scores_free                = SC.predict_pattern(2, best_iteration, opt.path_strong_predict, None, opt.num_features)
+            strong_notes_free, strong_scores_free                = SC.predict_pattern(2, best_iteration, opt.path_strong_predict, None, opt.features)
             classes, probs, max_neg_threshold, max_pos_threshold = BC.gaussian_kde(strong_notes_val, strong_scores_val, 'strong', best_iteration, X_test=strong_scores_free)  # Estimate likelihoods
 
             new_annotation = np.array(['1' if prob[np.where(classes == 1)] >= max_pos_threshold-opt.ll_tolerance and strong_scores_free[i] > opt.SS_pos_threshold else '0' for i, prob in enumerate(probs)])
@@ -362,7 +361,7 @@ if __name__ == '__main__':
 
     SC.load_norm(opt.SS_norm_file)
 
-    features_video = opt.num_frame/opt.features       # How many C3D Feature files in one video
-    pred_gap       = opt.num_frame/opt.temp_segments  # Reshape number of predictions to number of frames
+    features_video = int(opt.num_frame/opt.features)       # How many C3D Feature files in one video
+    pred_gap       = int(opt.num_frame/opt.temp_segments)  # Reshape number of predictions to number of frames
 
     WS_SS(opt.WSS_iterations)

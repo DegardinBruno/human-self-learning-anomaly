@@ -193,7 +193,7 @@ def auc(model, val_dataset, iteration, aton_iteration):
     fpr, tpr, thresholds = roc_curve(np.array(gt), np.array(scores))
 
 
-    savemat(os.path.join('results/strong/VAL', str(aton_iteration) ,'training_AUC_'+str(iteration)+'.mat'), {'AUC': AUC, 'X': fpr, 'Y': tpr, 'scores': scores, 'gt':notes_test})
+    savemat(os.path.join('results/strong/VAL', str(aton_iteration) ,'training_AUC_'+str(iteration)+'.mat'), {'AUC': AUC, 'X': fpr, 'Y': tpr, 'scores': scores, 'gt':gt})
 
     return AUC
 
@@ -328,7 +328,7 @@ def test(test_val_flag, aton_iteration, test_file, test_notes, num_features):
     AUC = roc_auc_score(np.array(gt), np.array(scores))
     fpr, tpr, thresholds = roc_curve(np.array(gt), np.array(scores))
     print(AUC)
-    savemat(os.path.join(Results_Path, 'eval_AUC_'+str(aton_iteration)+'.mat'), {'AUC': AUC, 'X': fpr, 'Y': tpr, 'scores': scores, 'gt': notes_test})
+    savemat(os.path.join(Results_Path, 'eval_AUC_'+str(aton_iteration)+'.mat'), {'AUC': AUC, 'X': fpr, 'Y': tpr, 'scores': scores, 'gt': gt})
 
     return np.array(gt), np.array(scores)
 

@@ -14,8 +14,8 @@ import matplotlib.pyplot as plt
 import pyprog
 
 epoch     = tf.Variable(0,  dtype=tf.float32)
-batch_obj = tf.Variable(60, dtype=tf.int16)
-segmt_obj = tf.Variable(32, dtype=tf.int16)
+batch_obj = 60
+segmt_obj = 32
 
 
 def create_model():
@@ -260,8 +260,8 @@ def train(path_loader, min_iterations, aton_iteration, val_file, val_notes, batc
     read_annotation(val_notes, 1)                                               # Load val annotation
 
     epoch     = tf.Variable(0,            dtype=tf.float32)                     # Variable to control the weights in the loss function
-    batch_obj = tf.Variable(batchsize,    dtype=tf.int16)                       # Variable of the loss function
-    segmt_obj = tf.Variable(tot_segments, dtype=tf.int16)                       # Variable of the loss function
+    batch_obj = batchsize                                                       # Variable of the loss function
+    segmt_obj = tot_segments                                                    # Variable of the loss function
     model     = create_model()
     adagrad   = Adagrad(lr=0.01, epsilon=1e-08)
     model.compile(loss=custom_objective, optimizer=adagrad)
@@ -400,13 +400,4 @@ def execute_free(aton_iteration, free_file, features, pred_gap):
 
 
 notes_train, notes_test, files_train, files_test = [], [], [], []
-
-
-
-
-
-
-
-
-
 
