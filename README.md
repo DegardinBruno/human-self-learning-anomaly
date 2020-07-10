@@ -12,7 +12,7 @@ pip install -r requirements.txt  # use flag --user if permission needed
 ```
 
 ##### Libraries version:
-* Keras: 2.4.3
+* Keras: 2.3.1
 * TensorFlow: 2.2.0
 * Scipy: 1.4.1
 * Scikit-learn: 0.23.1
