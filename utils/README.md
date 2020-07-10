@@ -12,7 +12,7 @@ python3 video_frames.py --root_videos path/to/videos --root_conv_videos destinat
 python3 normalize_videos.py --root_frames path/to/frames --root_sub_videos destination/path/sub/videos --erase_frames  # Change settings if needed
 ```
 
-3. **Normalize Annotations**: Convert .csv file annotations (testing sets and validation sets) accordingly to the sub videos from the previous step. Each row of the .csv file corresponds to one temporal frame.
+3. **Normalize Annotations**: Convert .csv file annotations (testing sets and validation sets) accordingly to the sub videos from the previous step. Each row of the .csv file corresponds to one temporal frame. After normalizing annotations concatenate each .csv video annotation file into one for testing and other for validation, corresponding to the *test_notes.csv* and *val_notes.csv* in the [Dataset and Directories Structures](https://github.com/DegardinBruno/human_activity_anomaly_IJCB20#dataset-and-directories-structure).
 ```bash
 python3 normalize_notes.py --root_csv path/to/csv/files --dest_csv destination/path/sub/csv/files --fps 30 --duration 16  # Change settings if needed
 ```
@@ -24,4 +24,4 @@ python3 normalize_notes.py --root_csv path/to/csv/files --dest_csv destination/p
 python3 normalize_C3D.py --root_C3D path/to/raw/features --dest_SEG destination/path/segments --sub_videos
 ```
 
-6. **CSV File Format**: Each row in a .csv file should contain the temporal segment's path and corresponding weak annotation (0 if the video does not contain any anomaly, and 1 if the video contains an anomaly somewhere). Example:\[path_to_temporal_segment_file, weak_flag\], where weak_flag is the weak annotation.
+6. **CSV File Format**: Each row in a .csv file in the [Dataset and Directories Structures](https://github.com/DegardinBruno/human_activity_anomaly_IJCB20#dataset-and-directories-structure) should contain the temporal segment's path and corresponding weak annotation (0 if the video does not contain any anomaly, and 1 if the video contains an anomaly somewhere). Example:\[path_to_temporal_segment_file, weak_flag\], where weak_flag is the weak annotation. 
