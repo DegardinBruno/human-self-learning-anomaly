@@ -381,9 +381,3 @@ def load_norm(norm_file):
 
 
 notes_train, notes_test, files_train, files_test, minmax = [], [], [], [], []
-
-
-
-
-
-
