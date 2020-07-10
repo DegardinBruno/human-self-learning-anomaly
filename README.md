@@ -82,6 +82,11 @@ python3 ws_ss.py --save_best_weak --save_best_strong    # Set flag settings acco
 python3 ws_ss.py --start_iteration 0 --weak_free_checkpoint --save_best_weak --save_best_strong    # Set flag settings accordingly to the ws_ss.py file
 ```
 
+- **Testing**: To evaluate the WS or SS model in the specific iteration over the testing data or validation data.
+```bash
+python3 test.py --strong_model --model_iteration 0 --path_test annotation/strong/test.csv --path_test_note annotation/strong/test_notes.csv   # Example to evaluate the SS model at iteration 0 of the WS/SS framework in the testing set
+```
+
 ## Citation
 Please cite this paper in your publications if it helps your research:
 
