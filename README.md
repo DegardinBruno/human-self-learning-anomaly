@@ -31,14 +31,14 @@ To train your model and employ self-supervision for each network, the following 
 
 ```
 |-- annotation
-|   |-- strong
+|   |-- strong                  // Insert here your .csv files to be used by the SS Model
 |   |   |-- train.csv           // empty, to be filled by the WS Model and Bayesian Classifier
 |   |   |-- test.csv
 |   |   |-- val.csv
 |   |   |-- unlabeled_set.csv
 |   |   |-- test_notes.csv
 |   |   `-- val_notes.csv
-|   `-- weak
+|   `-- weak                    // Insert here your .csv files to be used by the WS Model
 |       |-- train.csv           // Small percentage (i.e., 30%) of the original training set
 |       |-- test.csv
 |       |-- val.csv
