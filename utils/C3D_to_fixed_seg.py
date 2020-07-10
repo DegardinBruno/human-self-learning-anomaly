@@ -75,7 +75,6 @@ def C3D_to_fix_temp(root_C3D, dest_SEG, sufix, size, temp_segments, flag_sub):
                 convert(video, path_video, size, temp_segments, dest_folder, sufix)
 
 
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
@@ -90,3 +89,4 @@ if __name__ == '__main__':
     opt = parser.parse_args()
 
     C3D_to_fix_temp(opt.root_C3D, opt.dest_SEG, opt.sufix, opt.size_descriptor, opt.temp_segments, opt.sub_videos)
+    
