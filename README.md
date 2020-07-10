@@ -19,10 +19,7 @@ pip install -r requirements.txt  # use flag --user if permission needed
 * NumPy: 1.19.0
 
 ## Preprocessing Dataset
-1. Trim each video of your dataset into sub-videos of fixed length (use 16 seconds, for consistency).
-2. Extract the [C3Dv1.0](https://github.com/facebookarchive/C3D) features of your dataset, with the default settings.
-3. Convert [C3D](https://github.com/facebookarchive/C3D) features into a fixed temporal segment using [C3D_to_fix_segments.py](utils/C3D_to_fix_segments.py) (use 32, for consistency).
-4. Use .csv files to dispose each instance into a row -> \[path_to_temporal_segments_file, weak_flag\], where weak_flag contains 0 if the video does not contain any anomaly, and 1 if the video contains an anomaly somewhere.
+In order to employ the WS/SS framework and self-supervision, normalization is required since we are working with coupled deep learning networks working at different levels. Follow the steps inside the [utils](utils) folder to successfully normalize your dataset.
 
 ## Dataset and Directories Structure
 
