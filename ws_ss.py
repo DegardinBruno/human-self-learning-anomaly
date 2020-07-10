@@ -193,10 +193,10 @@ def WS_SS(iterations):
         ##########################
         #        SS  MODEL       #
         ##########################
-        if opt.strong_free_checkpoint:
+        if not opt.strong_free_checkpoint:
 
             ######## SS Model Training, Evaluation and Statistics ########
-             SC.train(opt.path_strong_train, opt.SS_iterations, current_iteration, opt.path_strong_val, opt.path_strong_val_note, opt.features, opt.batchsize_strong, opt.save_best_strong)
+            SC.train(opt.path_strong_train, opt.SS_iterations, current_iteration, opt.path_strong_val, opt.path_strong_val_note, opt.features, opt.batchsize_strong, opt.save_best_strong)
             strong_notes_test, strong_scores_test = SC.test(True, current_iteration, opt.path_strong_test, opt.path_strong_test_note, opt.features)
             statistics.plot_AUC('strong/FINAL', current_iteration)
             BC.histogram(strong_notes_test, strong_scores_test, 'strong/FINAL', current_iteration)
