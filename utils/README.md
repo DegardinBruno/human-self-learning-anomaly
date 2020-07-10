@@ -1,5 +1,5 @@
 ## Preprocessing Dataset
-In order to employ the WS/SS framework and self-supervision, normalization is required since we are working with coupled deep learning networks working at different levels. Follow the next steps to successfully preprocessing your dataset.
+In order to employ the WS/SS framework and apply self-supervision to your dataset, normalization is required since we are working with coupled deep learning networks working at different levels. Follow the next steps to successfully preprocessing your dataset.
 
 
 1. **Video Conversion**: Convert videos to frames. Videos inside their type directory.
