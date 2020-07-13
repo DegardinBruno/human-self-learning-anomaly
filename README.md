@@ -86,7 +86,7 @@ python3 test.py --strong_model --model_iteration 0 --path_test annotation/strong
 
 - **Inference**: Visualization of the response scores from a video. Install [C3D](https://github.com/facebookarchive/C3D) first.
 ```bash
-python3 inference.py --root_video abs_path_video --root_frames path_save_frames --root_C3D_dir abs_path_C3D --root_features abs_path_save_features  # Example to infer a model through your video
+python3 inference.py --root_video abs/path/video --root_frames path/save/frames --root_C3D_dir abs/path/C3D --root_features abs/path/save/features  # Example to infer a model through your video
 ```
 
 ## Citation
