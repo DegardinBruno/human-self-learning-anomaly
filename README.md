@@ -84,6 +84,11 @@ python3 ws_ss.py --start_iteration 0 --weak_free_checkpoint --save_best_weak --s
 python3 test.py --strong_model --model_iteration 0 --path_test annotation/strong/test.csv --path_test_note annotation/strong/test_notes.csv   # Example to evaluate the SS model at iteration 0 of the WS/SS framework in the testing set
 ```
 
+- **Inferece**: Visualization of the response scores from a video. Install [C3D](https://github.com/facebookarchive/C3D) first.
+```bash
+python3 inference.py --root_video abs_path_video --root_frames path_save_frames --root_C3D_dir abs_path_C3D --root_features abs_path_save_features  # Example to infer a model through your video
+```
+
 ## Citation
 Please cite this paper in your publications if it helps your research:
 
