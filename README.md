@@ -3,7 +3,7 @@
 This repository contains the code for the IJCB'20 paper ["Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events"](http://socia-lab.di.ubi.pt/EventDetection)
 
 <div align="center">
-    <img src="fig/WSS_Schema.png", width=100%">
+    <img src="data/WSS_Schema.png", width=100%">
 </div>
 
 ## Installation
