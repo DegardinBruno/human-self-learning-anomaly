@@ -224,7 +224,7 @@ if __name__ == '__main__':
     parser.add_argument('--model_dir',          type=str, default='PATH_TO_MODEL_AND_WEIGHTS', help='Directory where the model and weights are')
     parser.add_argument('--frames_per_feature', type=int, default=16,                          help='Frames per feature, default: C3D (16)')
     parser.add_argument('--fps',                type=int, default=30,                          help='FPS')
-    parser.add_argument('--norm_file',          type=str, default='minmax.csv',                help='Path normalization file')
+    parser.add_argument('--norm_file',          type=str, default='minmax.csv',                help='Path normalization file which the model was trained with')
     parser.add_argument('--output',             type=str, default='output.mp4',                help='Output video name')
 
     opt = parser.parse_args()
