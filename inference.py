@@ -11,7 +11,7 @@ if __name__ == '__main__':
     parser.add_argument('--root_features', type=str, default='PATH_TO_RAW_FEATURES',      help='Absolute path of the directory where to save the features')
     parser.add_argument('--csv_C3D',       type=str, default='demo.csv',                  help='Path to the csv file to be created for the dataloader')
     parser.add_argument('--model_dir',     type=str, default='pretrained',                help='Directory where the model and weights are')
-    parser.add_argument('--norm_file',     type=str, default='minmax.csv',                help='Path normalization file')
+    parser.add_argument('--norm_file',     type=str, default='minmax.csv',                help='Path normalization file which the model was trained with')
     parser.add_argument('--output',        type=str, default='output.mp4',                help='Output video name')
 
     opt = parser.parse_args()
