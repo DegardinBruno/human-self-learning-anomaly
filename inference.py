@@ -17,6 +17,6 @@ if __name__ == '__main__':
     opt = parser.parse_args()
 
 
-    os.system("sh inference.sh -a " + str(opt.root_video) +    " -b " + str(opt.root_frames) + " -c " + str(opt.root_C3D_dir) +
+    os.system("sh utils/inference.sh -a " + str(opt.root_video) +    " -b " + str(opt.root_frames) + " -c " + str(opt.root_C3D_dir) +
                              " -d " + str(opt.root_features) + " -e " + str(opt.csv_C3D) +     " -f " + str(opt.model_dir)+ " -g "+str(opt.norm_file))
 
