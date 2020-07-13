@@ -28,11 +28,11 @@ def create_model():
     return model
 
 
-def train(y_train, x_train, aton_iteration):
+def train(y_train, x_train, aton_iteration, features_video):
 
 
-    x_train = np.array([x_train[i: i+30] for i in range(0, len(x_train), 30)])                     # Stack scores
-    y_train = np.array([1 if max(y_train[i: i+30])>0 else 0 for i in range(0, len(y_train), 30)])  # Stack labels
+    x_train = np.array([x_train[i: i+features_video] for i in range(0, len(x_train), features_video)])                     # Stack scores
+    y_train = np.array([1 if max(y_train[i: i+features_video])>0 else 0 for i in range(0, len(y_train), features_video)])  # Stack labels
 
 
     train_dataset = create_train_dataset(x_train, y_train)
@@ -50,11 +50,10 @@ def train(y_train, x_train, aton_iteration):
         callbacks=[cp_callback])
 
 
-def test(x_test, test_val_flag, aton_iteration, y_test=None):
+def test(x_test, test_val_flag, aton_iteration, features_video, y_test=None):
 
-    print(np.array(x_test).shape)
-    x_test = [x_test[i: i+30] for i in range(0, len(x_test), 30)]
-    y_test = [1 if max(y_test[i: i+30])>0 else 0 for i in range(0, len(y_test), 30)] if test_val_flag else None
+    x_test = [x_test[i: i+features_video] for i in range(0, len(x_test), features_video)]
+    y_test = [1 if max(y_test[i: i+features_video])>0 else 0 for i in range(0, len(y_test), features_video)] if test_val_flag else None
 
     model = create_model()
     model.load_weights(os.path.join('models/pattern_model', str(aton_iteration), 'pattern_'+str(aton_iteration)+'.ckpt'))

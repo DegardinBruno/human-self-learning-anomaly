@@ -58,9 +58,12 @@ def chosen_from_strong(new_neg_videos, new_pos_videos):  # Annotation from the S
     selected_0       = np.array([])
     selected_1       = np.array([])
 
+    print(len(weak_free))
+    print(len(strong_free))
+
     # Annotating instances to the WS model and removing them from the unlabeled set
     for i, video in enumerate(weak_free):
-        instances = strong_free[np.arange(i * features_video, i * features_video + features_video, 1)]
+        instances = strong_free[np.arange(i * features_video, i * features_video + features_video - 1, 1)]
         if i in new_neg_videos:
             new_weak_train.append([video[0], 0])
             new_selected.append([video[0],0])
@@ -89,7 +92,7 @@ def chosen_from_strong(new_neg_videos, new_pos_videos):  # Annotation from the S
     for i in new_pos_videos:
         delete_strong_free = np.concatenate((delete_strong_free, np.arange(i*features_video,i*features_video+features_video,1)))
 
-    strong_free   = np.delete(strong_free, delete_strong_free)
+    strong_free   = np.delete(strong_free, np.array(delete_strong_free, dtype=np.int))
     strong_free   = np.array(strong_free).reshape((len(strong_free),1))
 
     write_file(opt.path_weak_train, new_weak_train)
@@ -211,20 +214,21 @@ def WS_SS(iterations):
             ######### Best SS Model Execution on Unlabeled Data ##########
             best_iteration                              = best_model('strong', current_iteration)
             strong_notes_pattern, strong_scores_pattern = checkpoint_val('strong', best_iteration)                           # Load train set for Pattern Classfier with results from val set
-            PC.train(strong_notes_pattern, strong_scores_pattern, current_iteration)                                         # Pattern Classifier training with validation scores and GT
-            classes, probs = PC.test(strong_scores_pattern, True, current_iteration, y_test=strong_notes_pattern)            # Keep stats
+            PC.train(strong_notes_pattern, strong_scores_pattern, current_iteration, features_video)                                         # Pattern Classifier training with validation scores and GT
+            classes, probs = PC.test(strong_scores_pattern, True, current_iteration, features_video, y_test=strong_notes_pattern)            # Keep stats
 
             strong_notes_pattern, strong_scores_pattern = SC.predict_pattern(1, best_iteration, opt.path_strong_free, None, opt.features)  # Execute SS model on unlabeled set
             save_free_scores('strong', current_iteration, strong_scores_pattern, [1,2,3])                                    # Backup scores
-            classes, probs = PC.test(strong_scores_pattern, False, current_iteration)                                        # Execute Pattern Classifier over unlabeled scores
+            classes, probs = PC.test(strong_scores_pattern, False, current_iteration, features_video)                                        # Execute Pattern Classifier over unlabeled scores
             save_free_scores('strong', current_iteration, strong_scores_pattern, probs)                                      # Backup scores
             ##############################################################
 
         if opt.strong_free_checkpoint:
-            best_iteration               = best_model('strong', current_iteration)
-            strong_scores_pattern, probs = checkpoint_load('strong', best_iteration)
-            max_neg_threshold            = (max(probs[:, 0]) // 0.001 / 1000)
-            max_pos_threshold            = (max(probs[:, 1]) // 0.001 / 1000)
+            best_iteration                      = best_model('strong', current_iteration)
+            strong_scores_pattern, probs        = checkpoint_load('strong', best_iteration)
+            strong_notes_val, strong_scores_val = checkpoint_val('strong', best_iteration)
+            min_neg_threshold                   = (min(probs) // 0.001 / 1000)
+            max_pos_threshold                   = (max(probs) // 0.001 / 1000)
 
         ############### Unlabeled scores filtering ###################
         free_stack     = np.array([strong_scores_pattern[i: i+features_video] for i in range(0, len(strong_scores_pattern), features_video)])  # Stack scores per video
@@ -261,6 +265,8 @@ def WS_SS(iterations):
         ##################################################################
 
         current_iteration += 1
+        opt.weak_free_checkpoint   = False
+        opt.strong_free_checkpoint = False
 
 
 if __name__ == '__main__':

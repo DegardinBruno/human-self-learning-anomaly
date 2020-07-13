@@ -368,8 +368,6 @@ def predict_pattern(test_val_flag, aton_iteration, execute_file, execute_notes, 
     AUC = roc_auc_score(np.array(gt), np.array(scores)) if test_val_flag == 0 else None
     print(AUC) if test_val_flag == 0 else None
 
-    print(Counter(np.array(gt)))
-
     return (np.array(gt) if test_val_flag == 0 else None), (np.array(scores))
 
 
