@@ -93,10 +93,10 @@ python3 inference.py --root_video abs/path/video --root_frames path/save/frames 
 Please cite this paper in your publications if it helps your research:
 
     @inproceedings{degardin2020human,
-      author = {Degardin, Bruno and Proença, Hugo},
-      title = {Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events},
-      booktitle={IEEE International Joint Conference on Biometrics},
-      year = {2020},
+      title={Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events},
+      author={Degardin, Bruno and Proen{\c{c}}a, Hugo},
+      booktitle={2020 IEEE International Joint Conference on Biometrics (IJCB)},
+      pages={1--7},
       organization={IEEE}
     }
 
