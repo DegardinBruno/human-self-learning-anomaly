@@ -1,5 +1,6 @@
 # Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/weakly-and-partially-supervised-learning/abnormal-event-detection-in-video-on-ubi)](https://paperswithcode.com/sota/abnormal-event-detection-in-video-on-ubi?p=weakly-and-partially-supervised-learning)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/iterative-weak-self-supervised-classification/semi-supervised-anomaly-detection-on-ubi)](https://paperswithcode.com/sota/semi-supervised-anomaly-detection-on-ubi?p=iterative-weak-self-supervised-classification)
 
 This repository contains the code for the IJCB'20 paper ["Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events"](https://ieeexplore.ieee.org/document/9304905)
