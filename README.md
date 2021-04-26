@@ -1,3 +1,5 @@
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 # Human Activity Analysis: Iterative Weak/Self-Supervised Learning Frameworks for Detecting Abnormal Events
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/weakly-and-partially-supervised-learning/abnormal-event-detection-in-video-on-ubi)](https://paperswithcode.com/sota/abnormal-event-detection-in-video-on-ubi?p=weakly-and-partially-supervised-learning)
